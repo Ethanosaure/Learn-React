@@ -1,6 +1,12 @@
 .square {
-  padding: 50px;
-  font-size: 50px;
-  font-weight: 900;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid black;
   background-color: white;
+}
+.board-row {
+  width: 100%;
+  height: 100%;
 }
