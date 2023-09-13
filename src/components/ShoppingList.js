@@ -20,7 +20,6 @@ function ShoppingList() {
         {plantList.map(({ id, cover, name, water, light }) => (
           <PlantItem
             key={id}
-            id={id}
             cover={cover}
             name={name}
             water={water}
