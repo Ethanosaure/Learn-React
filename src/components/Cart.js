@@ -11,6 +11,11 @@ function Cart({ cart, updateCart }) {
     document.title = `LMJ: ${total}€ d'achats`;
   }, [total]);
 
+  function removeArticle(name) {
+    const updatedCart = cart.filter((item) => item.name !== name);
+    updateCart(updatedCart);
+  }
+
   return isOpen ? (
     <div className="lmj-cart">
       <button
@@ -24,11 +29,17 @@ function Cart({ cart, updateCart }) {
           <h2>Panier</h2>
           <ul>
             {cart.map(({ name, price, amount }, index) => (
-              <div key={`${name}-${index}`}>
-                {name} {price}€ x {amount}
+              <div key={`${name}`}>
+                <div key={`${name}-${index}`}>
+                  {name} {price}€ x {amount}
+                </div>
+                <button onClick={() => removeArticle(name)}>
+                  Retirer l'article
+                </button>
               </div>
             ))}
           </ul>
+
           <h3>Total :{total}€</h3>
           <button onClick={() => updateCart([])}>Vider le panier</button>
         </div>
