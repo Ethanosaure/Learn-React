@@ -4,22 +4,18 @@ function Categories({ setActiveCategory, categories, activeCategory }) {
   return (
     <div className="lmj-categories">
       <select
-        multiple
         value={activeCategory}
-        onChange={(e) =>
-          setActiveCategory(
-            Array.from(e.target.selectedOptions, (option) => option.value)
-          )
-        }
+        onChange={(e) => setActiveCategory(e.target.value)}
         className="lmj-categories-select"
       >
-        <option value="">Toutes</option>
+        <option value="">---</option>
         {categories.map((cat) => (
           <option key={cat} value={cat}>
             {cat}
           </option>
         ))}
       </select>
+      <button onClick={() => setActiveCategory("")}>Réinitialiser</button>
     </div>
   );
 }
