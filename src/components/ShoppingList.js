@@ -5,7 +5,7 @@ import Categories from "./Categories";
 import "../styles/ShoppingList.css";
 
 function ShoppingList({ cart, updateCart }) {
-  const [activeCategory, setActiveCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState([]);
   const categories = plantList.reduce(
     (acc, plant) =>
       acc.includes(plant.category) ? acc : acc.concat(plant.category),
@@ -26,6 +26,7 @@ function ShoppingList({ cart, updateCart }) {
       updateCart([...cart, { name, price, amount: 1 }]);
     }
   }
+  console.log(activeCategory);
 
   return (
     <div className="lmj-shopping-list">
@@ -37,7 +38,7 @@ function ShoppingList({ cart, updateCart }) {
 
       <ul className="lmj-plant-list">
         {plantList.map(({ id, cover, name, water, light, price, category }) =>
-          !activeCategory || activeCategory === category ? (
+          !activeCategory.length || activeCategory.includes(category) ? (
             <div key={id}>
               <PlantItem
                 cover={cover}
