@@ -1,1 +1,6 @@
-
+.completed {
+  text-decoration: line-through;
+}
+.toComplete {
+  text-decoration: none;
+}

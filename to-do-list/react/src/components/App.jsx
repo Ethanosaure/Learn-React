@@ -1,23 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddTask from "./AddTask";
 import "../style/App.css";
 
 function App() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([]);
-  const [doingList, setDoingList] = useState([]);
-  const [doneList, setDoneList] = useState([]);
-
-  function changeDoing(todo) {
-    setDoingList((prev) => [
-      ...prev,
-      {
-        id: todo.id,
-        task: todo.task,
-        progression: "doing",
-      },
-    ]);
-    setTodoList((prev) => prev.filter((t) => t.id !== todo.id));
+  function handleCompleted(todo) {
+    setTodoList((prevTodoList) =>
+      prevTodoList.map((item) =>
+        item.id === todo.id ? { ...item, completed: !item.completed } : item
+      )
+    );
   }
 
   return (
@@ -33,7 +26,12 @@ function App() {
         <ul>
           {todoList.map((todo) => (
             <li key={todo.id}>
-              <div onClick={() => changeDoing(todo)}>{todo.task}</div>
+              <div
+                onClick={() => handleCompleted(todo)}
+                className={todo.completed ? "completed" : "toComplete"}
+              >
+                {todo.task}
+              </div>
             </li>
           ))}
         </ul>

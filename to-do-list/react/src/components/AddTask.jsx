@@ -8,9 +8,10 @@ function AddTask({ input, setInput, todoList, setTodoList }) {
       {
         id: id,
         task: input,
-        progression: "todo",
+        completed: false,
       },
     ]);
+
     setInput("");
   }
   return (
