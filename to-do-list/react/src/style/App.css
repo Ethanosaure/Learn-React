@@ -4,3 +4,19 @@
 .toComplete {
   text-decoration: none;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.toDoList {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -14,14 +14,16 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>To-Do-List</h1>
-      <AddTask
-        input={input}
-        setInput={setInput}
-        todoList={todoList}
-        setTodoList={setTodoList}
-      />
+    <div className="toDoList">
+      <div className="title">
+        <h1>To-Do-List</h1>
+        <AddTask
+          input={input}
+          setInput={setInput}
+          todoList={todoList}
+          setTodoList={setTodoList}
+        />
+      </div>
       <div className="todo">
         <ul>
           {todoList.map((todo) => (
