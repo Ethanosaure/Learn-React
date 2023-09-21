@@ -4,7 +4,10 @@ import "../style/App.css";
 
 function App() {
   const [input, setInput] = useState("");
-  const [todoList, setTodoList] = useState([]);
+  const savedTask = localStorage.getItem("task");
+  const [todoList, setTodoList] = useState(
+    savedTask ? JSON.parse(savedTask) : []
+  );
   function handleCompleted(todo) {
     setTodoList((prevTodoList) =>
       prevTodoList.map((item) =>
@@ -12,6 +15,9 @@ function App() {
       )
     );
   }
+  useEffect(() => {
+    localStorage.setItem("task", JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <div className="toDoList">
