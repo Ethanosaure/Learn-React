@@ -15,6 +15,10 @@ function App() {
       )
     );
   }
+  function removeTask(id) {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id);
+    setTodoList(updatedTodoList);
+  }
   useEffect(() => {
     localStorage.setItem("task", JSON.stringify(todoList));
   }, [todoList]);
@@ -39,6 +43,11 @@ function App() {
                 className={todo.completed ? "completed" : "toComplete"}
               >
                 {todo.task}
+                {todo.completed ? (
+                  <button type="button" onClick={() => removeTask(todo.id)}>
+                    remove
+                  </button>
+                ) : null}
               </div>
             </li>
           ))}

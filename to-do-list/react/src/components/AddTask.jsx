@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function AddTask({ input, setInput, todoList, setTodoList }) {
   function createTask() {
     const id = todoList.length + 1;
